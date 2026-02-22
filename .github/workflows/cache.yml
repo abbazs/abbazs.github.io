@@ -22,6 +22,7 @@ jobs:
           key: cache-c3dfa2d
 
       - name: prime-cache-c3dfa2d
+        id: prime-cache-c3dfa2d
         env:
           CACHE_HIT: ${{ steps.cache.outputs.cache-hit }}
         run: |
