@@ -1,4 +1,8 @@
-[
+[ "metadata": {
+    "email": "22f2000997@ds.study.iitm.ac.in",
+    "version": "40ca4247"
+  },
+  "products":[
   {
     "id": "prod-40ca4247-001",
     "name": "Premium Item 1",
@@ -118,5 +122,10 @@
     "price": 240,
     "stock": 63,
     "rating": 2.8
+  }],"aggregations": {
+    "electronics": {
+      "count": 4,
+      "inventoryValue": 83425.23
+    }
   }
 ]
