@@ -22,7 +22,7 @@ jobs:
           key: cache-c3dfa2d
 
       - name: prime-cache-c3dfa2d
-        run: echo "Cache hit: ${{ steps.cache.outputs.cache-hit }}"
+        run: echo 'Cache hit: ${{ steps.cache.outputs.cache-hit }}'
 
       - name: Install dependencies
         run: npm install --prefer-offline
