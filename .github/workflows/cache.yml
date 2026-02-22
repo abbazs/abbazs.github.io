@@ -24,7 +24,8 @@ jobs:
       - name: prime-cache-c3dfa2d
         env:
           CACHE_HIT: ${{ steps.cache.outputs.cache-hit }}
-        run: echo "Cache hit: $CACHE_HIT"
+        run: |
+          echo "Cache hit: $CACHE_HIT"
 
       - name: Install dependencies
         run: npm install --prefer-offline
