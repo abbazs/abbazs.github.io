@@ -1,0 +1,29 @@
+name: CI with dependency caching
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: cache-c3dfa2d
+
+      - name: prime-cache-c3dfa2d
+        run: echo "Cache hit: ${{ steps.cache.outputs.cache-hit }}"
+
+      - name: Install dependencies
+        run: npm install --prefer-offline
+        if: steps.cache.outputs.cache-hit != 'true'
