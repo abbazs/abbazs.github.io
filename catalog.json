@@ -1,1 +1,134 @@
-{\n  "metadata": {\n    "email": "22f2000997@ds.study.iitm.ac.in",\n    "version": "40ca4247"\n  },\n  "products": [\n    {\n      "id": "prod-40ca4247-001",\n      "name": "Premium Item 1",\n      "category": "sports",\n      "price": 123.15,\n      "stock": 27,\n      "rating": 1.3\n    },\n    {\n      "id": "prod-40ca4247-002",\n      "name": "Basic Item 2",\n      "category": "electronics",\n      "price": 174.38,\n      "stock": 193,\n      "rating": 2\n    },\n    {\n      "id": "prod-40ca4247-003",\n      "name": "Premium Item 3",\n      "category": "electronics",\n      "price": 250,\n      "stock": 169,\n      "rating": 4\n    },\n    {\n      "id": "prod-40ca4247-004",\n      "name": "Basic Item 4",\n      "category": "clothing",\n      "price": 190.12,\n      "stock": 54,\n      "rating": 3.7\n    },\n    {\n      "id": "prod-40ca4247-005",\n      "name": "Standard Item 5",\n      "category": "clothing",\n      "price": 311.27,\n      "stock": 6,\n      "rating": 1.8\n    },\n    {\n      "id": "prod-40ca4247-006",\n      "name": "Elite Item 6",\n      "category": "home",\n      "price": 131.4,\n      "stock": 54,\n      "rating": 3\n    },\n    {\n      "id": "prod-40ca4247-007",\n      "name": "Standard Item 7",\n      "category": "home",\n      "price": 258.49,\n      "stock": 72,\n      "rating": 3.5\n    },\n    {\n      "id": "prod-40ca4247-008",\n      "name": "Pro Item 8",\n      "category": "books",\n      "price": 489.73,\n      "stock": 20,\n      "rating": 3.6\n    },\n    {\n      "id": "prod-40ca4247-009",\n      "name": "Premium Item 9",\n      "category": "electronics",\n      "price": 176.01,\n      "stock": 13,\n      "rating": 1.5\n    },\n    {\n      "id": "prod-40ca4247-010",\n      "name": "Pro Item 10",\n      "category": "clothing",\n      "price": 97.8,\n      "stock": 10,\n      "rating": 1.9\n    },\n    {\n      "id": "prod-40ca4247-011",\n      "name": "Premium Item 11",\n      "category": "clothing",\n      "price": 44.38,\n      "stock": 38,\n      "rating": 3\n    },\n    {\n      "id": "prod-40ca4247-012",\n      "name": "Basic Item 12",\n      "category": "sports",\n      "price": 461.49,\n      "stock": 22,\n      "rating": 5\n    },\n    {\n      "id": "prod-40ca4247-013",\n      "name": "Pro Item 13",\n      "category": "clothing",\n      "price": 372.95,\n      "stock": 11,\n      "rating": 3\n    },\n    {\n      "id": "prod-40ca4247-014",\n      "name": "Basic Item 14",\n      "category": "electronics",\n      "price": 435.98,\n      "stock": 12,\n      "rating": 2.5\n    },\n    {\n      "id": "prod-40ca4247-015",\n      "name": "Elite Item 15",\n      "category": "clothing",\n      "price": 240,\n      "stock": 63,\n      "rating": 2.8\n    }\n  ],\n  "aggregations": {\n    "electronics": {\n      "count": 4,\n      "inventoryValue": 83425.23\n    }\n  }\n}
+{
+  "metadata": {
+    "email": "22f2000997@ds.study.iitm.ac.in",
+    "version": "40ca4247"
+  },
+  "products": [
+    {
+      "id": "prod-40ca4247-001",
+      "name": "Premium Item 1",
+      "category": "sports",
+      "price": 123.15,
+      "stock": 27,
+      "rating": 1.3
+    },
+    {
+      "id": "prod-40ca4247-002",
+      "name": "Basic Item 2",
+      "category": "electronics",
+      "price": 174.38,
+      "stock": 193,
+      "rating": 2
+    },
+    {
+      "id": "prod-40ca4247-003",
+      "name": "Premium Item 3",
+      "category": "electronics",
+      "price": 250,
+      "stock": 169,
+      "rating": 4
+    },
+    {
+      "id": "prod-40ca4247-004",
+      "name": "Basic Item 4",
+      "category": "clothing",
+      "price": 190.12,
+      "stock": 54,
+      "rating": 3.7
+    },
+    {
+      "id": "prod-40ca4247-005",
+      "name": "Standard Item 5",
+      "category": "clothing",
+      "price": 311.27,
+      "stock": 6,
+      "rating": 1.8
+    },
+    {
+      "id": "prod-40ca4247-006",
+      "name": "Elite Item 6",
+      "category": "home",
+      "price": 131.4,
+      "stock": 54,
+      "rating": 3
+    },
+    {
+      "id": "prod-40ca4247-007",
+      "name": "Standard Item 7",
+      "category": "home",
+      "price": 258.49,
+      "stock": 72,
+      "rating": 3.5
+    },
+    {
+      "id": "prod-40ca4247-008",
+      "name": "Pro Item 8",
+      "category": "books",
+      "price": 489.73,
+      "stock": 20,
+      "rating": 3.6
+    },
+    {
+      "id": "prod-40ca4247-009",
+      "name": "Premium Item 9",
+      "category": "electronics",
+      "price": 176.01,
+      "stock": 13,
+      "rating": 1.5
+    },
+    {
+      "id": "prod-40ca4247-010",
+      "name": "Pro Item 10",
+      "category": "clothing",
+      "price": 97.8,
+      "stock": 10,
+      "rating": 1.9
+    },
+    {
+      "id": "prod-40ca4247-011",
+      "name": "Premium Item 11",
+      "category": "clothing",
+      "price": 44.38,
+      "stock": 38,
+      "rating": 3
+    },
+    {
+      "id": "prod-40ca4247-012",
+      "name": "Basic Item 12",
+      "category": "sports",
+      "price": 461.49,
+      "stock": 22,
+      "rating": 5
+    },
+    {
+      "id": "prod-40ca4247-013",
+      "name": "Pro Item 13",
+      "category": "clothing",
+      "price": 372.95,
+      "stock": 11,
+      "rating": 3
+    },
+    {
+      "id": "prod-40ca4247-014",
+      "name": "Basic Item 14",
+      "category": "electronics",
+      "price": 435.98,
+      "stock": 12,
+      "rating": 2.5
+    },
+    {
+      "id": "prod-40ca4247-015",
+      "name": "Elite Item 15",
+      "category": "clothing",
+      "price": 240,
+      "stock": 63,
+      "rating": 2.8
+    }
+  ],
+  "aggregations": {
+    "electronics": {
+      "count": 4,
+      "inventoryValue": 83425.23
+    }
+  }
+}
