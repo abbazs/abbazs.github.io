@@ -10,333 +10,419 @@
   <meta property="og:type" content="profile">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --paper: #f2f4f1;
-      --sheet: #fbfcfa;
-      --ink: #1a2024;
-      --graphite: #545e66;
-      --rule: #cdd3cf;
-      --accent: #2346a0;
-      /* sequential ramp for career eras: early = light, now = deep */
-      --era-1: #b9c7e6;
-      --era-2: #93a8d8;
-      --era-3: #6f89c8;
-      --era-4: #4c6bb6;
-      --era-5: #2f52a6;
-      --era-6: #1b3784;
-      --measure: 44rem;
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --ink: #14171c;
+      --ink-2: #3b424d;
+      --muted: #6a7382;
+      --line: #e2e5ea;
+      --accent: #46597e;
+      --accent-ink: #ffffff;
+      --accent-soft: #eceff4;
+      --area-top: rgba(70, 89, 126, 0.10);
+      --glass: rgba(255, 255, 255, 0.64);
+      --glass-strong: rgba(255, 255, 255, 0.72);
+      --tile: rgba(255, 255, 255, 0.55);
+      --glass-border: rgba(255, 255, 255, 0.85);
+      --glass-edge: rgba(20, 30, 60, 0.08);
+      --glass-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset, 0 18px 40px -22px rgba(25, 40, 90, 0.28);
+      --wash-1: rgba(120, 138, 172, 0.16);
+      --wash-2: rgba(156, 146, 176, 0.12);
+      --wash-3: rgba(132, 160, 158, 0.10);
+      --base: #eef0f3;
+      --wrap: 72rem;
       color-scheme: light;
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
-        --paper: #14181b;
-        --sheet: #1a1f23;
-        --ink: #e4e8e6;
-        --graphite: #9aa5ad;
-        --rule: #333b41;
-        --accent: #8fa9ec;
-        --era-1: #2b3a5c;
-        --era-2: #344a7a;
-        --era-3: #3f5c98;
-        --era-4: #5574b8;
-        --era-5: #7290d4;
-        --era-6: #9bb3ee;
-        color-scheme: dark;
+        --bg: #0d1015; --surface: #141820; --ink: #edf0f4; --ink-2: #c3c9d3; --muted: #8b95a5;
+        --line: #232a35; --accent: #a9b6cf; --accent-ink: #0b0d11; --accent-soft: #1a1e26;
+        --area-top: rgba(169, 182, 207, 0.09); color-scheme: dark;
+        --glass: rgba(21, 25, 32, 0.58); --glass-strong: rgba(26, 32, 45, 0.72); --tile: rgba(255, 255, 255, 0.035);
+        --glass-border: rgba(255, 255, 255, 0.09); --glass-edge: rgba(255, 255, 255, 0.04);
+        --glass-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 24px 48px -24px rgba(0, 0, 0, 0.7);
+        --wash-1: rgba(96, 112, 148, 0.22); --wash-2: rgba(118, 108, 140, 0.15); --wash-3: rgba(86, 118, 118, 0.11);
+        --base: #0b0d11;
       }
     }
     :root[data-theme="dark"] {
-      --paper: #14181b; --sheet: #1a1f23; --ink: #e4e8e6; --graphite: #9aa5ad;
-      --rule: #333b41; --accent: #8fa9ec;
-      --era-1: #2b3a5c; --era-2: #344a7a; --era-3: #3f5c98; --era-4: #5574b8; --era-5: #7290d4; --era-6: #9bb3ee;
-      color-scheme: dark;
+      --bg: #0d1015; --surface: #141820; --ink: #edf0f4; --ink-2: #c3c9d3; --muted: #8b95a5;
+      --line: #232a35; --accent: #a9b6cf; --accent-ink: #0b0d11; --accent-soft: #1a1e26;
+      --area-top: rgba(169, 182, 207, 0.09); color-scheme: dark;
+      --glass: rgba(21, 25, 32, 0.58); --glass-strong: rgba(26, 32, 45, 0.72); --tile: rgba(255, 255, 255, 0.035);
+      --glass-border: rgba(255, 255, 255, 0.09); --glass-edge: rgba(255, 255, 255, 0.04);
+      --glass-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 24px 48px -24px rgba(0, 0, 0, 0.7);
+      --wash-1: rgba(96, 112, 148, 0.22); --wash-2: rgba(118, 108, 140, 0.15); --wash-3: rgba(86, 118, 118, 0.11);
+      --base: #0b0d11;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: "Archivo", system-ui, sans-serif;
-      font-size: 1.0625rem;
-      line-height: 1.55;
-      font-variation-settings: "wdth" 100;
+      margin: 0; background: var(--base); color: var(--ink); position: relative; min-height: 100vh;
+      font-family: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 1.0625rem; line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
-    a { color: var(--accent); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
-    a:hover { text-decoration-thickness: 2px; }
-    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-
-    .page {
-      max-width: 68rem;
-      margin: 0 auto;
-      padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 5vw, 4rem) 4rem;
+    body::before {
+      content: ""; position: fixed; inset: -10vmax; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(38vmax 38vmax at 12% 8%, var(--wash-1), transparent 70%),
+        radial-gradient(34vmax 34vmax at 88% 28%, var(--wash-2), transparent 70%),
+        radial-gradient(40vmax 40vmax at 40% 96%, var(--wash-3), transparent 70%),
+        radial-gradient(30vmax 30vmax at 95% 85%, var(--wash-1), transparent 70%);
+      filter: blur(20px);
     }
 
-    /* ---------- masthead ---------- */
-    .masthead { max-width: var(--measure); margin-bottom: clamp(2.5rem, 6vw, 4rem); }
-    .masthead h1 {
-      margin: 0;
-      font-size: clamp(2.6rem, 8vw, 5.25rem);
-      line-height: 0.95;
-      font-weight: 800;
-      font-stretch: 118%;
-      font-variation-settings: "wdth" 118;
-      letter-spacing: -0.02em;
+    /* frosted glass surface */
+    .glass, .arc, .job, .oss li, .skills div, .facts, .intro p {
+      background: var(--glass);
+      -webkit-backdrop-filter: blur(22px) saturate(150%); backdrop-filter: blur(22px) saturate(150%);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      border-radius: 20px;
     }
-    .role {
-      margin: 0.9rem 0 0;
-      font-size: clamp(1.15rem, 2.4vw, 1.4rem);
-      font-weight: 600;
-      font-variation-settings: "wdth" 108;
+    /* justified prose inside cards */
+    .intro p, .lead, .job-main li, .facets dd, .oss p, .velocity figcaption span {
+      text-align: justify; -webkit-hyphens: auto; hyphens: auto; text-wrap: pretty;
     }
-    .lede { margin: 1.25rem 0 0; font-size: 1.15rem; color: var(--ink); max-width: 40rem; }
-    .contact {
-      display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: center;
-      margin-top: 1.5rem; padding: 0; list-style: none; color: var(--graphite); font-size: 0.98rem;
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2.5rem); }
+
+    /* ---------- top bar ---------- */
+    .bar {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--base) 55%, transparent);
+      backdrop-filter: saturate(160%) blur(12px); -webkit-backdrop-filter: saturate(160%) blur(12px);
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
     }
-    .print-btn {
-      font: inherit; font-size: 0.95rem; color: var(--accent);
-      background: none; border: 1px solid var(--rule); border-radius: 4px;
-      padding: 0.3rem 0.75rem; cursor: pointer;
+    .bar .wrap { display: flex; align-items: center; justify-content: space-between; height: 3.5rem; gap: 1rem; }
+    .bar .me { font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+    .bar .me:hover { text-decoration: none; }
+    .bar nav { display: flex; gap: clamp(0.9rem, 2.5vw, 1.75rem); font-size: 0.95rem; }
+    .bar nav a { color: var(--muted); }
+    .bar nav a:hover { color: var(--ink); text-decoration: none; }
+
+    /* ---------- hero ---------- */
+    .hero { padding: clamp(3.5rem, 9vw, 7rem) 0 0; }
+    h1 {
+      margin: 0; font-size: clamp(2.75rem, 7.4vw, 5.75rem); line-height: 0.95;
+      font-weight: 600; letter-spacing: -0.045em;
     }
-    .print-btn:hover { border-color: var(--accent); }
+    .headline {
+      margin: 1.25rem 0 0; max-width: 28ch;
+      font-size: clamp(1.4rem, 2.9vw, 2.1rem); line-height: 1.22; font-weight: 400;
+      letter-spacing: -0.02em; color: var(--ink-2);
+    }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; margin-top: 2rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem; height: 2.75rem; padding: 0 1.15rem;
+      border-radius: 999px; font: inherit; font-size: 0.98rem; font-weight: 500; cursor: pointer;
+      border: 1px solid var(--glass-border); background: var(--glass); color: var(--ink);
+      -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); box-shadow: var(--glass-shadow);
+    }
+    .btn:hover { text-decoration: none; border-color: var(--muted); }
+    .btn.primary { background: var(--ink); color: var(--base); border-color: var(--ink); }
+    .btn.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+    .btn svg { width: 1.05rem; height: 1.05rem; }
+    .where { color: var(--muted); font-size: 0.95rem; }
+    .intro {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 3rem;
+      margin-top: clamp(2.5rem, 5vw, 3.5rem);
+      color: var(--ink-2); font-size: 1.04rem; line-height: 1.7;
+    }
+    .intro p { margin: 0; padding: 1.5rem 1.75rem; }
 
     /* ---------- section scaffolding ---------- */
-    section { margin-top: clamp(3rem, 7vw, 5rem); }
-    h2 {
-      margin: 0 0 1.5rem;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      line-height: 1.1;
-      font-weight: 750;
-      font-variation-settings: "wdth" 115;
-      letter-spacing: -0.01em;
-      padding-bottom: 0.6rem;
-      border-bottom: 2px solid var(--ink);
-    }
-    h3 { margin: 0; font-size: 1.25rem; line-height: 1.25; font-weight: 700; font-variation-settings: "wdth" 106; }
-    h4 { margin: 1.5rem 0 0.4rem; font-size: 1.02rem; font-weight: 700; }
-    p { margin: 0.6rem 0 0; }
-    ul { margin: 0.5rem 0 0; padding-left: 1.15rem; }
-    li { margin: 0.3rem 0; }
-    li::marker { color: var(--graphite); }
-    .muted { color: var(--graphite); }
+    .block { padding: clamp(3.5rem, 7vw, 5.5rem) 0 0; scroll-margin-top: 3.5rem; }
+    .block-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem 1rem; margin-bottom: 2rem; }
+    h2 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.1; font-weight: 600; letter-spacing: -0.03em; }
+    .block-head p { margin: 0; color: var(--muted); font-size: 0.95rem; text-align: right; }
+    h3 { margin: 0; font-size: 1.4rem; line-height: 1.2; font-weight: 600; letter-spacing: -0.02em; }
+    p { margin: 0.75rem 0 0; }
+    ul { margin: 0.75rem 0 0; padding-left: 1.1rem; }
+    li { margin: 0.45rem 0; }
+    li::marker { color: var(--muted); }
 
-    /* ---------- career span (the one bold element) ---------- */
-    .span-intro { max-width: var(--measure); margin: 0 0 1.5rem; color: var(--graphite); }
-    .span {
-      --from: 1999.4;
-      --years: 27.7;
-      position: relative;
-      background: var(--sheet);
-      border: 1px solid var(--rule);
-      border-radius: 6px;
-      padding: 1.25rem 1.25rem 0.75rem;
+    /* ---------- career arc (the signature) ---------- */
+    .arc {
+      margin: 0; padding: clamp(1rem, 2.5vw, 2rem) clamp(1rem, 2.5vw, 2rem) 1rem;
     }
-    .span-list { list-style: none; margin: 0; padding: 0; }
-    .span-row { margin: 0; }
-    .span-row a {
-      display: grid;
-      grid-template-columns: minmax(14rem, 18rem) 1fr;
-      gap: 1rem;
-      align-items: center;
-      padding: 0.55rem 0;
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px dashed var(--rule);
-    }
-    .span-row:last-child a { border-bottom: 0; }
-    .span-row a:hover .span-label strong { color: var(--accent); }
-    .span-label { line-height: 1.3; }
-    .span-label strong { display: block; font-weight: 650; }
-    .span-label span { font-size: 0.9rem; color: var(--graphite); }
-    .track { position: relative; height: 1.6rem; }
-    .track::before { /* drafting baseline */
-      content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid var(--rule);
-    }
-    .bar {
-      position: absolute; top: 0.2rem; bottom: 0.2rem;
-      left: calc((var(--s) - var(--from)) / var(--years) * 100%);
-      width: max(6px, calc((var(--e) - var(--s)) / var(--years) * 100%));
-      background: var(--c);
-      border-radius: 2px;
-      transform-origin: left center;
-    }
-    .axis {
-      display: grid; grid-template-columns: minmax(14rem, 18rem) 1fr; gap: 1rem;
-      margin-top: 0.4rem; font-size: 0.8rem; color: var(--graphite); font-variant-numeric: tabular-nums;
-    }
-    .axis-ticks { position: relative; height: 1.2rem; }
-    .axis-ticks span {
-      position: absolute; transform: translateX(-50%);
-      left: calc((var(--y) - var(--from)) / var(--years) * 100%);
-    }
-    .axis-ticks span::before {
-      content: ""; position: absolute; left: 50%; top: -0.45rem; height: 0.35rem; border-left: 1px solid var(--graphite);
-    }
-
+    .arc svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .arc .base { stroke: var(--line); stroke-width: 1; }
+    .arc .tick { fill: var(--muted); font-size: 12px; font-family: inherit; }
+    .arc .area { fill: url(#arcfill); }
+    .arc .line { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+    .arc .dot { fill: var(--base); stroke: var(--accent); stroke-width: 2.5; }
+    .arc .dot.now { fill: var(--accent); }
+    .arc .role { fill: var(--ink); font-size: 13.5px; font-weight: 600; font-family: inherit; }
+    .arc .yr { fill: var(--muted); font-size: 12px; font-family: inherit; }
+    .arc .band { stroke: var(--glass-edge); stroke: color-mix(in srgb, var(--muted) 35%, transparent); stroke-width: 6; stroke-linecap: round; }
+    .arc .band.now { stroke: var(--accent); }
+    .arc .co { fill: var(--ink-2); font-size: 12.5px; font-weight: 500; font-family: inherit; }
+    .arc-list { display: none; list-style: none; padding: 0; margin: 0; }
     @media (prefers-reduced-motion: no-preference) {
-      .bar { animation: draw 700ms cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i) * 110ms + 150ms); }
-      @keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+      .arc .line { stroke-dasharray: 1600; stroke-dashoffset: 1600; animation: draw 1.6s cubic-bezier(.4,.1,.2,1) .2s forwards; }
+      .arc .area, .arc .dot, .arc .role, .arc .yr { opacity: 0; animation: fade .6s ease 1.3s forwards; }
+      @keyframes draw { to { stroke-dashoffset: 0; } }
+      @keyframes fade { to { opacity: 1; } }
     }
 
     /* ---------- experience ---------- */
     .job {
-      display: grid;
-      grid-template-columns: 11rem minmax(0, var(--measure));
-      gap: 0.5rem 2.5rem;
-      padding: 2rem 0;
-      border-top: 1px solid var(--rule);
-      scroll-margin-top: 1.5rem;
+      display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: 1rem 3rem;
+      padding: clamp(1.4rem, 3vw, 2.25rem); margin-top: 1.25rem; scroll-margin-top: 4.5rem;
     }
-    .job:first-of-type { border-top: 0; padding-top: 0.5rem; }
-    .job-when { font-variant-numeric: tabular-nums; color: var(--graphite); font-size: 0.95rem; line-height: 1.4; padding-top: 0.2rem; }
-    .job-when strong { display: block; color: var(--ink); font-weight: 600; }
-    .job-company { margin-top: 0.15rem; color: var(--graphite); }
-    .ladder { list-style: none; padding: 0; margin: 0.75rem 0 0; }
-    .ladder li {
-      position: relative; padding-left: 1.25rem; margin: 0.2rem 0;
-      font-variant-numeric: tabular-nums;
+    .job:first-of-type { margin-top: 0; }
+    .job-side { position: sticky; top: 5rem; align-self: start; }
+    .when { margin-top: 0.35rem; color: var(--muted); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+    .roles { list-style: none; padding: 0; margin: 1rem 0 0; border-left: 2px solid color-mix(in srgb, var(--muted) 30%, transparent); }
+    .roles li { position: relative; margin: 0; padding: 0.2rem 0 0.2rem 1rem; font-size: 0.95rem; color: var(--ink-2); }
+    .roles li span { color: var(--muted); font-variant-numeric: tabular-nums; }
+    .roles li:first-child { color: var(--ink); font-weight: 500; }
+    .roles li:first-child::before {
+      content: ""; position: absolute; left: -2px; top: 0.2rem; bottom: 0.2rem; width: 2px; background: var(--accent);
     }
-    .ladder li::before { /* rising step marker: these really are a sequence */
-      content: ""; position: absolute; left: 0.1rem; top: 0.55em; width: 0.5rem; height: 0.5rem;
-      border-left: 2px solid var(--accent); border-top: 2px solid var(--accent);
+    .note { color: var(--muted); font-size: 0.95rem; margin-top: 0.75rem; }
+    .job-main { color: var(--ink-2); }
+    .lead { margin-top: 0; font-size: 1.15rem; line-height: 1.6; color: var(--ink); letter-spacing: -0.005em; }
+
+    .facets { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin: 2rem 0 0; }
+    .facets div { background: var(--tile); border: 1px solid var(--glass-edge); border-radius: 14px; padding: 1.1rem 1.2rem; }
+    .facets dt { color: var(--ink); font-weight: 600; letter-spacing: -0.01em; }
+    .facets dd { margin: 0.35rem 0 0; font-size: 0.98rem; line-height: 1.6; }
+
+    .velocity { margin: 0.9rem 0 0; padding: 1.5rem 1.5rem 1.25rem; border-radius: 14px; background: color-mix(in srgb, var(--accent) 7%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 14%, transparent); }
+    .velocity figcaption { color: var(--ink); font-weight: 600; }
+    .velocity figcaption span { display: block; margin-top: 0.2rem; font-weight: 400; color: var(--ink-2); font-size: 0.95rem; }
+    .cols4 { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; align-items: end; }
+    .cols4 li { margin: 0; display: flex; flex-direction: column; justify-content: flex-end; text-align: center; }
+    .cols4 b { font-size: 1.05rem; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .cols4 i { display: block; height: calc(var(--v) / 650 * 9.5rem); min-height: 3px; margin-top: 0.4rem; border-radius: 6px 6px 2px 2px; background: var(--accent); }
+    .cols4 span { margin-top: 0.5rem; font-size: 0.85rem; color: var(--ink-2); line-height: 1.3; height: 2.6em; }
+
+    h4 { margin: 2.25rem 0 0; font-size: 1rem; font-weight: 600; color: var(--ink); }
+
+    /* ---------- open source / skills / education ---------- */
+    .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .oss { list-style: none; padding: 0; margin: 0; }
+    .oss li { margin: 0; padding: 1.4rem 1.5rem; color: var(--ink-2); }
+    .oss a { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.015em; }
+    .oss .lang { display: block; color: var(--muted); font-size: 0.88rem; margin-top: 0.1rem; }
+    .oss p { margin-top: 0.6rem; font-size: 0.98rem; }
+
+    .skills { margin: 0; }
+    .skills div { padding: 1.2rem 1.4rem; }
+    .skills dt { font-weight: 600; color: var(--ink); }
+    .skills dd { margin: 0.3rem 0 0; color: var(--ink-2); font-size: 0.98rem; }
+
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .facts { list-style: none; margin: 0; padding: 1.5rem 1.6rem 0.4rem; }
+    .facts li { margin: 0 0 1.25rem; color: var(--ink-2); }
+    .facts b { color: var(--ink); font-weight: 600; }
+    .facts span { display: block; color: var(--muted); font-size: 0.95rem; }
+
+    /* ---------- contact ---------- */
+    .contact {
+      margin-top: clamp(4rem, 8vw, 6rem); padding: clamp(2rem, 5vw, 3.5rem);
+      border-radius: 24px; color: var(--ink);
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 9%, var(--glass)), var(--glass));
+      -webkit-backdrop-filter: blur(22px) saturate(150%); backdrop-filter: blur(22px) saturate(150%);
+      border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
+      display: grid; grid-template-columns: 1fr auto; gap: 1.5rem 2rem; align-items: end;
+      scroll-margin-top: 4.5rem;
     }
-    .ladder .yr { color: var(--graphite); }
+    .contact p { color: var(--ink-2); margin-top: 0.6rem; }
+    .contact .mail { display: block; font-size: clamp(1.4rem, 3.2vw, 2.2rem); font-weight: 600; letter-spacing: -0.025em; color: var(--ink); }
+    .contact .alt { display: block; margin-top: 0.5rem; color: var(--ink-2); font-size: 0.95rem; }
+    footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.9rem; }
 
-    .facets { margin: 1rem 0 0; }
-    .facets dt { font-weight: 700; margin-top: 1rem; }
-    .facets dd { margin: 0.2rem 0 0; }
-
-
-    /* velocity figure */
-    figure.velocity {
-      margin: 1.75rem 0 0.5rem; padding: 1rem 1.1rem 0.9rem;
-      background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px;
+    /* ---------- responsive ---------- */
+    @media (max-width: 900px) {
+      .job { grid-template-columns: 1fr; gap: 1.25rem; }
+      .job-side { position: static; }
+      .three { grid-template-columns: 1fr 1fr; }
     }
-    figure.velocity figcaption { font-weight: 650; }
-    figure.velocity figcaption span { display: block; font-weight: 400; color: var(--graphite); font-size: 0.92rem; margin-top: 0.15rem; }
-    .vbars { list-style: none; margin: 0.9rem 0 0; padding: 0; }
-    .vbars li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.75rem; align-items: center; margin: 0.35rem 0; font-size: 0.92rem; }
-    .vbars .lbl { color: var(--graphite); font-variant-numeric: tabular-nums; }
-    .vbars .val { display: flex; align-items: center; gap: 0.5rem; font-variant-numeric: tabular-nums; }
-    .vbars .val i { display: block; height: 0.85rem; border-radius: 2px; background: var(--accent); width: calc(var(--v) / 650 * (100% - 3rem)); min-width: 3px; }
-
-    /* ---------- open source, skills, education ---------- */
-    .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 0.5rem 3rem; }
-    .oss { list-style: none; padding: 0; margin: 0; max-width: var(--measure); }
-    .oss li { margin: 0 0 1.1rem; }
-    .oss a { font-weight: 700; }
-    .oss .lang { color: var(--graphite); font-size: 0.92rem; }
-
-    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.25rem 3rem; margin: 0; }
-    .skills div { break-inside: avoid; }
-    .skills dt { font-weight: 700; }
-    .skills dd { margin: 0.2rem 0 0; color: var(--ink); }
-
-    .plain { list-style: none; padding: 0; margin: 0; }
-    .plain li { margin: 0 0 0.9rem; }
-
-    footer { margin-top: 4rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); color: var(--graphite); font-size: 0.9rem; }
-
-    /* ---------- small screens ---------- */
-    @media (max-width: 760px) {
-      .span { padding: 1rem 0.9rem 0.5rem; }
-      .span-row a, .axis { grid-template-columns: 1fr; gap: 0.35rem; }
-      .axis > :first-child { display: none; }
-      .job { grid-template-columns: 1fr; gap: 0.25rem; }
-      .job-when strong { display: inline; margin-right: 0.5rem; }
-      .vbars li { grid-template-columns: 6rem 1fr; }
+    @media (max-width: 720px) {
+      .bar nav a.opt { display: none; }
+      .job { padding: 1.25rem 1.1rem; border-radius: 18px; }
+      .intro p { padding: 1.2rem 1.25rem; }
+      .facets div { padding: 0.95rem 1rem; }
+      .job-main ul { padding-left: 1rem; }
+      .intro, .facets, .two, .three { grid-template-columns: 1fr; }
+      .arc svg { display: none; }
+      .arc-list { display: block; }
+      .arc-list li { display: grid; grid-template-columns: 3.25rem 1fr; gap: 0.75rem; padding: 0.6rem 0; border-top: 1px solid var(--line); margin: 0; }
+      .arc-list li:first-child { border-top: 0; }
+      .arc-list .y { color: var(--muted); font-variant-numeric: tabular-nums; }
+      .arc-list b { font-weight: 600; color: var(--ink); }
+      .arc-list small { display: block; color: var(--muted); font-size: 0.88rem; }
+      .contact { grid-template-columns: 1fr; }
+      .block-head { flex-direction: column; }
+      .block-head p { text-align: left; }
+      .cols4 i { height: calc(var(--v) / 650 * 7.5rem); }
     }
 
-    /* ---------- print / save as PDF ---------- */
+    @media (max-width: 560px) {
+      .intro p, .lead, .job-main li, .facets dd, .oss p, .velocity figcaption span { text-align: left; }
+    }
+
+    /* ---------- print ---------- */
     @media print {
-      :root { --paper: #fff; --sheet: #fff; }
+      :root { --bg: #fff; --surface: #fff; }
       body { font-size: 10pt; background: #fff; }
-      .page { padding: 0; max-width: none; }
-      .print-btn { display: none; }
-      a { color: inherit; text-decoration: none; }
-      section { margin-top: 1.5rem; }
-      h2 { break-after: avoid; }
-      .job, figure, .skills div { break-inside: avoid; }
-      .bar, .vbars i { -webkit-print-color-adjust: exact; print-color-adjust: exact; animation: none; }
+      .bar, .actions, .contact { display: none; }
+      body::before { display: none; }
+      .arc, .job, .oss li, .skills div, .facts, .intro p { background: #fff; box-shadow: none; backdrop-filter: none; border-color: #ddd; }
+      .hero { padding-top: 0; }
+      .job-side { position: static; }
+      .job, .facets div, figure, .skills div { break-inside: avoid; }
+      .arc, .velocity, .cols4 i, .arc svg * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .arc .line, .arc .area, .arc .dot, .arc .role, .arc .yr { animation: none; opacity: 1; stroke-dashoffset: 0; }
+      a { color: inherit; }
       @page { margin: 14mm; }
     }
   </style>
 </head>
 <body>
-<main class="page">
 
-  <header class="masthead">
+<header class="bar">
+  <div class="wrap">
+    <a class="me" href="#top">Mohamed Abbas Ali</a>
+    <nav aria-label="Sections">
+      <a href="#experience">Experience</a>
+      <a class="opt" href="#open-source">Open source</a>
+      <a class="opt" href="#tools">Tools</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <section class="hero">
     <h1>Mohamed Abbas Ali</h1>
-    <p class="role">I build engineering and manufacturing software, and the teams that ship it.</p>
-    <p class="lede">
-      Since 1999 I've worked where engineering meets code. At QuEST Global I built design-automation
-      systems for turbomachinery OEMs, chiefly General Electric and Hitachi, and went on to run those
-      programs. At Caresoft, as General Manager of Operations, my teams' tools saved over 20,000 hours
-      a year, and my simulation work earned a Ford Manufacturing Leadership Award. At Cadonix I was
-      founding engineer and Head of Engineering of smartBuild, a manufacturing execution system I took
-      from an empty repository to seven production services, more than 70 releases and a team of eight.
-      I still write the code, and I build AI into how my teams work. At Onward Technologies I now
-      design AI platforms that accelerate engineering R&amp;D services.
-    </p>
-    <ul class="contact">
-      <li>Chennai, India</li>
-      <li><a href="mailto:abbazs@gmail.com"><!--email_off-->abbazs@gmail.com<!--/email_off--></a></li>
-      <li><a href="mailto:22f2000997@ds.study.iitm.ac.in"><!--email_off-->22f2000997@ds.study.iitm.ac.in<!--/email_off--></a></li>
-      <li><button class="print-btn" type="button" onclick="window.print()">Print or save as PDF</button></li>
-    </ul>
-  </header>
-
-  <section aria-labelledby="span-h">
-    <h2 id="span-h">Career at a glance</h2>
-    <p class="span-intro">Each bar is one stage of my career, newest first, drawn to scale on a 1999–2026 axis. Select a stage to jump to its details.</p>
-    <div class="span">
-      <ol class="span-list" reversed>
-        <li class="span-row"><a href="#onward">
-          <span class="span-label"><strong>AI platforms for engineering R&amp;D</strong><span>Onward Technologies · 2026–now</span></span>
-          <span class="track" aria-hidden="true"><span class="bar" style="--s:2026.58;--e:2026.9;--c:var(--era-6);--i:0"></span></span>
-        </a></li>
-        <li class="span-row"><a href="#cadonix">
-          <span class="span-label"><strong>Founding a manufacturing platform</strong><span>Cadonix · 2022–2026</span></span>
-          <span class="track" aria-hidden="true"><span class="bar" style="--s:2022.25;--e:2026.58;--c:var(--era-5);--i:1"></span></span>
-        </a></li>
-        <li class="span-row"><a href="#caresoft">
-          <span class="span-label"><strong>Automating automotive benchmarking</strong><span>Caresoft Global · 2014–2022</span></span>
-          <span class="track" aria-hidden="true"><span class="bar" style="--s:2014.67;--e:2022.25;--c:var(--era-4);--i:2"></span></span>
-        </a></li>
-        <li class="span-row"><a href="#quest">
-          <span class="span-label"><strong>Engineering automation for turbomachinery</strong><span>QuEST Global · 2001–2014</span></span>
-          <span class="track" aria-hidden="true"><span class="bar" style="--s:2001.45;--e:2014.67;--c:var(--era-3);--i:3"></span></span>
-        </a></li>
-        <li class="span-row"><a href="#tcs">
-          <span class="span-label"><strong>CAD design</strong><span>TCS · 1999–2001</span></span>
-          <span class="track" aria-hidden="true"><span class="bar" style="--s:1999.75;--e:2001.45;--c:var(--era-1);--i:4"></span></span>
-        </a></li>
-      </ol>
-      <div class="axis" aria-hidden="true">
-        <span></span>
-        <span class="axis-ticks">
-          <span style="--y:2000">2000</span><span style="--y:2005">2005</span><span style="--y:2010">2010</span>
-          <span style="--y:2015">2015</span><span style="--y:2020">2020</span><span style="--y:2025">2025</span>
-        </span>
-      </div>
+    <p class="headline">I build engineering and manufacturing software, and the teams that ship it.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:abbazs@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+        Email me
+      </a>
+      <button class="btn" type="button" onclick="window.print()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>
+        Save as PDF
+      </button>
+      <span class="where">Chennai, India</span>
+    </div>
+    <div class="intro">
+      <p>Since 1999 I've worked where engineering meets code. At QuEST Global I built design-automation
+        systems for turbomachinery OEMs, chiefly General Electric and Hitachi, and went on to run those
+        programs. At Caresoft, as General Manager of Operations, my teams' tools saved over 20,000 hours
+        a year, and my simulation work earned a Ford Manufacturing Leadership Award.</p>
+      <p>At Cadonix I was founding engineer and Head of Engineering of smartBuild, a manufacturing
+        execution system I took from an empty repository to seven production services, more than 70
+        releases and a team of eight. I still write the code, and I build AI into how my teams work.
+        At Onward Technologies I now design AI platforms that accelerate engineering R&amp;D services.</p>
     </div>
   </section>
 
-  <section aria-labelledby="exp-h">
-    <h2 id="exp-h">Experience</h2>
+  <section class="block" aria-labelledby="arc-h">
+    <div class="block-head">
+      <h2 id="arc-h">Career arc</h2>
+      <p>27 years, from CAD designer to head of engineering</p>
+    </div>
+    <figure class="arc">
+      <svg viewBox="0 0 1000 365" role="img" aria-labelledby="arc-title">
+        <title id="arc-title">Career progression from CAD Designer in 1999 to General Manager and Head of Engineering in 2022, and AI platform work from 2026</title>
+        <defs>
+          <linearGradient id="arcfill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="var(--area-top)"/>
+            <stop offset="1" stop-color="var(--area-top)" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <line class="base" x1="40" y1="300" x2="960" y2="300"/>
+        <path class="area" d="M51.7 290 H223.3 V257.1 H286.7 V224.3 H343.3 V191.4 H520 V158.6 H549 V125.7 H626.7 V92.9 H793.3 V60 H956.7 V300 H51.7 Z"/>
+        <path class="line" d="M51.7 290 H223.3 V257.1 H286.7 V224.3 H343.3 V191.4 H520 V158.6 H549 V125.7 H626.7 V92.9 H793.3 V60 H956.7"/>
+
+        <circle class="dot" cx="51.7" cy="290" r="5"/>
+        <text class="role" x="64" y="276">CAD Designer</text><text class="yr" x="64" y="261">1999</text>
+
+        <circle class="dot" cx="223.3" cy="257.1" r="5"/>
+        <text class="role" x="211" y="259" text-anchor="end">Technical Leader</text><text class="yr" x="211" y="274" text-anchor="end">2004</text>
+
+        <circle class="dot" cx="286.7" cy="224.3" r="5"/>
+        <text class="role" x="274" y="226" text-anchor="end">Subject Matter Specialist</text><text class="yr" x="274" y="241" text-anchor="end">2006</text>
+
+        <circle class="dot" cx="343.3" cy="191.4" r="5"/>
+        <text class="role" x="331" y="193" text-anchor="end">Project Manager</text><text class="yr" x="331" y="208" text-anchor="end">2008</text>
+
+        <circle class="dot" cx="520" cy="158.6" r="5"/>
+        <text class="role" x="508" y="160" text-anchor="end">Program Manager</text><text class="yr" x="508" y="175" text-anchor="end">2013</text>
+
+        <circle class="dot" cx="549" cy="125.7" r="5"/>
+        <text class="role" x="537" y="127" text-anchor="end">Senior Manager</text><text class="yr" x="537" y="142" text-anchor="end">2014</text>
+
+        <circle class="dot" cx="626.7" cy="92.9" r="5"/>
+        <text class="role" x="614" y="94" text-anchor="end">Deputy General Manager</text><text class="yr" x="614" y="109" text-anchor="end">2017</text>
+
+        <circle class="dot" cx="793.3" cy="60" r="5"/>
+        <text class="role" x="781" y="62" text-anchor="end">General Manager, then Head of Engineering</text><text class="yr" x="781" y="77" text-anchor="end">2022</text>
+
+        <circle class="dot now" cx="956.7" cy="60" r="6"/>
+        <text class="role" x="956.7" y="38" text-anchor="end">AI platforms for engineering R&amp;D</text><text class="yr" x="956.7" y="23" text-anchor="end">2026, now</text>
+
+        <line class="band" x1="51.7" y1="318" x2="104" y2="318"/>
+        <line class="band" x1="112" y1="318" x2="545" y2="318"/>
+        <line class="band" x1="553" y1="318" x2="797" y2="318"/>
+        <line class="band" x1="805" y1="318" x2="942" y2="318"/>
+        <line class="band now" x1="950" y1="318" x2="957" y2="318"/>
+        <text class="co" x="51.7" y="340">TCS</text>
+        <text class="co" x="112" y="340">QuEST Global</text>
+        <text class="co" x="553" y="340">Caresoft Global</text>
+        <text class="co" x="805" y="340">Cadonix</text>
+        <text class="co" x="957" y="340" text-anchor="end">Onward</text>
+
+        <text class="tick" x="58.7" y="362" text-anchor="middle">2000</text>
+        <text class="tick" x="225.4" y="362" text-anchor="middle">2005</text>
+        <text class="tick" x="392.0" y="362" text-anchor="middle">2010</text>
+        <text class="tick" x="558.7" y="362" text-anchor="middle">2015</text>
+        <text class="tick" x="725.4" y="362" text-anchor="middle">2020</text>
+        <text class="tick" x="892.0" y="362" text-anchor="middle">2025</text>
+      </svg>
+      <ol class="arc-list" reversed>
+        <li><span class="y">2026</span><span><b>AI platforms for engineering R&amp;D</b><small>Onward Technologies</small></span></li>
+        <li><span class="y">2022</span><span><b>Head of Engineering</b><small>Cadonix</small></span></li>
+        <li><span class="y">2022</span><span><b>General Manager, Operations</b><small>Caresoft Global</small></span></li>
+        <li><span class="y">2017</span><span><b>Deputy General Manager</b><small>Caresoft Global</small></span></li>
+        <li><span class="y">2014</span><span><b>Senior Manager</b><small>Caresoft Global</small></span></li>
+        <li><span class="y">2013</span><span><b>Program Manager</b><small>QuEST Global</small></span></li>
+        <li><span class="y">2008</span><span><b>Project Manager</b><small>QuEST Global</small></span></li>
+        <li><span class="y">2006</span><span><b>Subject Matter Specialist</b><small>QuEST Global</small></span></li>
+        <li><span class="y">2004</span><span><b>Technical Leader</b><small>QuEST Global</small></span></li>
+        <li><span class="y">1999</span><span><b>CAD Designer</b><small>TCS</small></span></li>
+      </ol>
+    </figure>
+  </section>
+
+  <section class="block" id="experience" aria-labelledby="exp-h">
+    <div class="block-head"><h2 id="exp-h">Experience</h2></div>
 
     <article class="job" id="onward">
-      <div class="job-when"><strong>Aug 2026 – now</strong>Chennai</div>
-      <div>
+      <div class="job-side">
         <h3>Onward Technologies</h3>
-        <div class="job-company">Joined as Solution Architect</div>
-        <p>
-          I shape and prove concepts for platforms that use AI to accelerate engineering R&amp;D
-          services, taking each idea from a problem statement to a working proof of concept.
-        </p>
+        <div class="when">Aug 2026 – now, Chennai</div>
+        <div class="note">Joined as Solution Architect</div>
+      </div>
+      <div class="job-main">
+        <p class="lead">I shape and prove concepts for platforms that use AI to accelerate engineering R&amp;D
+          services, taking each idea from a problem statement to a working proof of concept.</p>
         <ul>
           <li>Built a proof of concept that automatically validates Certificates of Analysis and
             Certificates of Conformance (CoA/CoC). It gathers certificates however they arrive, as
@@ -348,47 +434,37 @@
     </article>
 
     <article class="job" id="cadonix">
-      <div class="job-when"><strong>Apr 2022 – Jul 2026</strong>Chennai</div>
-      <div>
+      <div class="job-side">
         <h3>Cadonix</h3>
-        <ol class="ladder" aria-label="Role at Cadonix">
-          <li>Head of Engineering <span class="yr">2022</span></li>
-        </ol>
-        <p>
-          Founding engineer of <b>smartBuild</b>, a manufacturing execution system for industrial
+        <div class="when">Apr 2022 – Jul 2026, Chennai</div>
+        <ol class="roles" aria-label="Role at Cadonix"><li>Head of Engineering <span>2022</span></li></ol>
+      </div>
+      <div class="job-main">
+        <p class="lead">Founding engineer of smartBuild, a manufacturing execution system for industrial
           formboard assembly and production tracking. I built it from an empty repository in 2023 to
           seven cloud-deployed services in production, and owned the backend, database, cloud
           infrastructure, DevOps, security, observability and AI features. I led 8+ engineers across
-          backend, frontend and QA automation.
-        </p>
+          backend, frontend and QA automation.</p>
 
         <dl class="facets">
-          <dt>Architecture</dt>
-          <dd>17-repository Python/TypeScript platform: FastAPI and EdgeDB backend with domain-driven design, Celery workers, an MQTT station-control service, a centralized log service, a Nuxt 3 frontend and an Nginx router.</dd>
-          <dt>Security</dt>
-          <dd>Led a platform-wide multi-tenant initiative that moved 15+ domains to EdgeDB global customer isolation, removing a whole class of IDOR vulnerabilities. Designed JWT multi-session auth with JTI revocation, forced re-authentication on permission escalation, HSTS, and WAF rate limiting.</dd>
-          <dt>Cloud infrastructure</dt>
-          <dd>Sole owner of all AWS infrastructure in Pulumi (EC2, least-privilege IAM, S3, ALB, NLB, WAF, RDS, ElastiCache) across development, staging and production. Built a local environment of 7 Docker containers that mirrors production with no mocked infrastructure.</dd>
-          <dt>Delivery</dt>
-          <dd>Shipped 70+ semantic-versioned releases through feature → dev → staging → production promotion. Wrote the CI/CD pipeline for every service and a Python CLI that runs git workflows, service lifecycle, releases and database operations across all 17 repositories.</dd>
-          <dt>AI in the product and the process</dt>
-          <dd>Built SSE streaming endpoints for LLM-driven build-sequence analysis using Valkey pub/sub, with prompt history, scope enforcement and token-cost tracking. Built an AI merge-request review agent with multi-turn investigation and multi-model fallback, wired into the release CLI.</dd>
-          <dt>Factory floor</dt>
-          <dd>Led the real-time MQTT station-control service that talks to manufacturing hardware. Designed a separate JWT security domain for station viewports and fixed WebSocket reconnect-pairing incidents.</dd>
-          <dt>Observability</dt>
-          <dd>Replaced per-service queue logging with a centralized log service that has HTTP ingestion, structured routing and Slack/email alerting. Kept an incident log and alert playbooks.</dd>
+          <div><dt>Architecture</dt><dd>17-repository Python/TypeScript platform: FastAPI and EdgeDB backend with domain-driven design, Celery workers, an MQTT station-control service, a centralized log service, a Nuxt 3 frontend and an Nginx router.</dd></div>
+          <div><dt>Security</dt><dd>Led a platform-wide multi-tenant initiative that moved 15+ domains to EdgeDB global customer isolation, removing a whole class of IDOR vulnerabilities. Designed JWT multi-session auth with JTI revocation, forced re-authentication on permission escalation, HSTS, and WAF rate limiting.</dd></div>
+          <div><dt>Cloud infrastructure</dt><dd>Sole owner of all AWS infrastructure in Pulumi (EC2, least-privilege IAM, S3, ALB, NLB, WAF, RDS, ElastiCache) across development, staging and production. Built a local environment of 7 Docker containers that mirrors production with no mocked infrastructure.</dd></div>
+          <div><dt>Delivery</dt><dd>Shipped 70+ semantic-versioned releases through feature → dev → staging → production promotion. Wrote the CI/CD pipeline for every service and a Python CLI that runs git workflows, service lifecycle, releases and database operations across all 17 repositories.</dd></div>
+          <div><dt>AI in the product and the process</dt><dd>Built SSE streaming endpoints for LLM-driven build-sequence analysis using Valkey pub/sub, with prompt history, scope enforcement and token-cost tracking. Built an AI merge-request review agent with multi-turn investigation and multi-model fallback, wired into the release CLI.</dd></div>
+          <div><dt>Factory floor</dt><dd>Led the real-time MQTT station-control service that talks to manufacturing hardware. Designed a separate JWT security domain for station viewports and fixed WebSocket reconnect-pairing incidents.</dd></div>
+          <div><dt>Observability</dt><dd>Replaced per-service queue logging with a centralized log service that has HTTP ingestion, structured routing and Slack/email alerting. Kept an incident log and alert playbooks.</dd></div>
         </dl>
 
         <figure class="velocity">
-          <figcaption>
-            Delivery rate, commits per month
+          <figcaption>Delivery rate, commits per month
             <span>Same team size throughout. AI-augmented engineering became part of the workflow in mid-2025.</span>
           </figcaption>
-          <ul class="vbars">
-            <li><span class="lbl">2023 (May–Dec)</span><span class="val"><i style="--v:56"></i>~56</span></li>
-            <li><span class="lbl">2024</span><span class="val"><i style="--v:34"></i>~34</span></li>
-            <li><span class="lbl">2025</span><span class="val"><i style="--v:388"></i>~388</span></li>
-            <li><span class="lbl">2026 (Jan–Apr)</span><span class="val"><i style="--v:650"></i>~650</span></li>
+          <ul class="cols4">
+            <li><b>~56</b><i style="--v:56"></i><span>2023<br>May–Dec</span></li>
+            <li><b>~34</b><i style="--v:34"></i><span>2024</span></li>
+            <li><b>~388</b><i style="--v:388"></i><span>2025</span></li>
+            <li><b>~650</b><i style="--v:650"></i><span>2026<br>Jan–Apr</span></li>
           </ul>
         </figure>
 
@@ -401,19 +477,19 @@
     </article>
 
     <article class="job" id="caresoft">
-      <div class="job-when"><strong>Sep 2014 – Mar 2022</strong>Pollachi, then Chennai</div>
-      <div>
+      <div class="job-side">
         <h3>Caresoft Global</h3>
-        <ol reversed class="ladder" aria-label="Roles at Caresoft Global">
-          <li>General Manager, Operations <span class="yr">2022</span></li>
-          <li>Deputy General Manager, Operations <span class="yr">2017</span></li>
-          <li>Senior Manager <span class="yr">2014</span></li>
+        <div class="when">Sep 2014 – Mar 2022, Pollachi and Chennai</div>
+        <ol class="roles" aria-label="Roles at Caresoft Global">
+          <li>General Manager, Operations <span>2022</span></li>
+          <li>Deputy General Manager, Operations <span>2017</span></li>
+          <li>Senior Manager <span>2014</span></li>
         </ol>
-        <p>
-          Led the operation that automated the hardest parts of automotive benchmarking, from data
+      </div>
+      <div class="job-main">
+        <p class="lead">Led the operation that automated the hardest parts of automotive benchmarking, from data
           acquisition through data cleaning to migrating data between versions. The tools my teams
-          built saved more than <b>20,000 hours a year</b>.
-        </p>
+          built saved more than 20,000 hours a year.</p>
         <ul>
           <li>We built manufacturing simulation tooling, including a system that generates plant
             simulation models from structured data instead of building them by hand. My contribution
@@ -430,21 +506,21 @@
     </article>
 
     <article class="job" id="quest">
-      <div class="job-when"><strong>Jun 2001 – Aug 2014</strong>Bangalore</div>
-      <div>
+      <div class="job-side">
         <h3>QuEST Global</h3>
-        <ol reversed class="ladder" aria-label="Roles at QuEST Global">
-          <li>Program Manager <span class="yr">2013</span></li>
-          <li>Project Manager <span class="yr">2008</span></li>
-          <li>Subject Matter Specialist <span class="yr">2006</span></li>
-          <li>Technical Leader <span class="yr">2004</span></li>
-          <li>Project Engineer <span class="yr">2001</span></li>
+        <div class="when">Jun 2001 – Aug 2014, Bangalore</div>
+        <ol class="roles" aria-label="Roles at QuEST Global">
+          <li>Program Manager <span>2013</span></li>
+          <li>Project Manager <span>2008</span></li>
+          <li>Subject Matter Specialist <span>2006</span></li>
+          <li>Technical Leader <span>2004</span></li>
+          <li>Project Engineer <span>2001</span></li>
         </ol>
-        <p>
-          Thirteen years building engineering-automation software for turbomachinery and aerospace
+      </div>
+      <div class="job-main">
+        <p class="lead">Thirteen years building engineering-automation software for turbomachinery and aerospace
           OEMs, chiefly General Electric and Hitachi. I grew from writing the automation myself to
-          leading the teams and programs that delivered it.
-        </p>
+          leading the teams and programs that delivered it.</p>
         <ul>
           <li>We built knowledge-based engineering systems that generate production 3D models and
             manufacturing drawings for centrifugal compressors and steam turbines, covering impellers,
@@ -463,31 +539,30 @@
     </article>
 
     <article class="job" id="tcs">
-      <div class="job-when"><strong>Oct 1999 – Jun 2001</strong>Chennai</div>
-      <div>
+      <div class="job-side">
         <h3>TCS</h3>
-        <ol class="ladder" aria-label="Role at TCS">
-          <li>CAD Designer <span class="yr">1999</span></li>
-        </ol>
+        <div class="when">Oct 1999 – Jun 2001, Chennai</div>
+        <ol class="roles" aria-label="Role at TCS"><li>CAD Designer <span>1999</span></li></ol>
       </div>
+      <div class="job-main"></div>
     </article>
   </section>
 
-  <section aria-labelledby="oss-h">
-    <h2 id="oss-h">Open source</h2>
-    <ul class="oss">
-      <li><a href="https://github.com/abbazs/xcat" target="_blank" rel="noopener">xcat</a> <span class="lang">Rust</span><br>
-        A tree, cat and clipboard tool in one CLI, for feeding codebases into LLM context windows. Prebuilt binaries for Linux, macOS and Windows.</li>
-      <li><a href="https://github.com/abbazs/pyxclip" target="_blank" rel="noopener">pyxclip</a> <span class="lang">Rust, PyO3</span><br>
-        Cross-platform Python clipboard library with no system dependencies. Handles text, RGBA images and file paths.</li>
-      <li><a href="https://github.com/abbazs/rich-stepper" target="_blank" rel="noopener">rich-stepper</a> <span class="lang">Python</span><br>
-        Multi-step terminal progress widget for Rich, used in the AI merge-request review agent.</li>
+  <section class="block" id="open-source" aria-labelledby="oss-h">
+    <div class="block-head"><h2 id="oss-h">Open source</h2><p>Tools I built for my own AI-assisted workflow</p></div>
+    <ul class="oss three">
+      <li><a href="https://github.com/abbazs/xcat" target="_blank" rel="noopener">xcat</a><span class="lang">Rust</span>
+        <p>A tree, cat and clipboard tool in one CLI, for feeding codebases into LLM context windows. Prebuilt binaries for Linux, macOS and Windows.</p></li>
+      <li><a href="https://github.com/abbazs/pyxclip" target="_blank" rel="noopener">pyxclip</a><span class="lang">Rust, PyO3</span>
+        <p>Cross-platform Python clipboard library with no system dependencies. Handles text, RGBA images and file paths.</p></li>
+      <li><a href="https://github.com/abbazs/rich-stepper" target="_blank" rel="noopener">rich-stepper</a><span class="lang">Python</span>
+        <p>Multi-step terminal progress widget for Rich, used in the AI merge-request review agent.</p></li>
     </ul>
   </section>
 
-  <section aria-labelledby="skills-h">
-    <h2 id="skills-h">Tools I work with</h2>
-    <dl class="skills">
+  <section class="block" id="tools" aria-labelledby="skills-h">
+    <div class="block-head"><h2 id="skills-h">Tools I work with</h2></div>
+    <dl class="skills three">
       <div><dt>Languages</dt><dd>Python, TypeScript, Rust, JavaScript, C#, C, C++, Java</dd></div>
       <div><dt>Backend</dt><dd>FastAPI, Pydantic, Celery, Django, Flask</dd></div>
       <div><dt>Frontend</dt><dd>Nuxt 3, Vue 3, D3.js, WPF</dd></div>
@@ -500,17 +575,28 @@
     </dl>
   </section>
 
-  <section aria-labelledby="edu-h">
-    <h2 id="edu-h">Education and recognition</h2>
-    <div class="two-col">
-      <ul class="plain">
-        <li><b>BS in Data Science and Applications</b>, IIT Madras<br><span class="muted">2022 – in progress. Diploma in Programming completed.</span></li>
-        <li><b>Diploma in Mechanical Engineering</b><br><span class="muted">1995 – 1998</span></li>
+  <section class="block" aria-labelledby="edu-h">
+    <div class="block-head"><h2 id="edu-h">Education and recognition</h2></div>
+    <div class="two">
+      <ul class="facts">
+        <li><b>BS in Data Science and Applications</b>, IIT Madras<span>2022 – in progress. Diploma in Programming completed.</span></li>
+        <li><b>Diploma in Mechanical Engineering</b><span>1995 – 1998</span></li>
       </ul>
-      <ul class="plain">
-        <li><b>Manufacturing Leadership Award</b>, Ford, 2020<br><span class="muted">For contribution to the Symbiotic Simulation project.</span></li>
-        <li><b>Leadership courses</b><br><span class="muted">Coaching and mentoring, negotiation, and contracting in Transactional Analysis (Navgati); Curriculum for Living (Landmark Education).</span></li>
+      <ul class="facts">
+        <li><b>Manufacturing Leadership Award</b>, Ford, 2020<span>For contribution to the Symbiotic Simulation project.</span></li>
+        <li><b>Leadership courses</b><span>Coaching and mentoring, negotiation, and contracting in Transactional Analysis (Navgati); Curriculum for Living (Landmark Education).</span></li>
       </ul>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div>
+      <h2 id="contact-h">Contact</h2>
+      <p>Based in Chennai, India.</p>
+    </div>
+    <div>
+      <a class="mail" href="mailto:abbazs@gmail.com"><!--email_off-->abbazs@gmail.com<!--/email_off--></a>
+      <a class="alt" href="mailto:22f2000997@ds.study.iitm.ac.in"><!--email_off-->22f2000997@ds.study.iitm.ac.in<!--/email_off--></a>
     </div>
   </section>
 
